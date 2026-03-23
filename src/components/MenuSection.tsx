@@ -33,11 +33,11 @@ export function MenuSection() {
   };
 
   return (
-    <section id="menu" className="bg-[#262525] py-16 lg:py-24">
+    <section id="menu" className="bg-secondary py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
         <div className="space-y-8 lg:space-y-12">
           {/* Title */}
-          <h2 className="capitalize font-normal text-[#c59d5f] text-3xl lg:text-[50px] text-center leading-normal">
+          <h2 className="capitalize font-normal text-destructive text-3xl lg:text-[50px] text-center leading-normal">
             Our Menu
           </h2>
 

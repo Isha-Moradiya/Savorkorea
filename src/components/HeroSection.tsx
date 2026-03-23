@@ -5,7 +5,7 @@ import imgImage5 from "figma:asset/b88a27fa547cd3378b5008681ebfc13b2ee89b2e.png"
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-[#f4e8ac] min-h-screen overflow-hidden">
+    <section id="home" className="relative bg-background min-h-screen overflow-hidden">
       {/* Animated Food Images Background */}
       <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">

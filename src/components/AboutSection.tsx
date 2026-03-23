@@ -2,7 +2,7 @@ import imgRectangle45 from "figma:asset/0d34b9352c70559ec933d1c2567bbbcb5230ef18
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-[#111] py-16 lg:py-24">
+    <section id="about" className="bg-background py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-7">
           {/* Image */}

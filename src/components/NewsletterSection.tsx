@@ -17,11 +17,11 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="bg-[#111] py-0">
+    <section className="bg-background py-0">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col lg:flex-row">
           {/* Content Side */}
-          <div className="w-full lg:w-[64%] bg-[#c59d5f] px-6 lg:px-20 py-12 lg:py-20">
+          <div className="w-full lg:w-[64%] bg-destructive px-6 lg:px-20 py-12 lg:py-20">
             <div className="max-w-[625px] space-y-8 lg:space-y-10">
               {/* Title */}
               <h2 className="capitalize font-normal text-[#111] text-3xl lg:text-[50px] leading-normal">

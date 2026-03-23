@@ -10,7 +10,7 @@ import { Footer } from "../components/Footer";
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-[#111]">
+    <div className="min-h-screen bg-background">
       <Header />
       <main>
         <HeroSection />
