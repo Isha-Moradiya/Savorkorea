@@ -46,9 +46,11 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-bold tracking-tighter text-primary">
-              SAVOR<span className="text-destructive">KOREA</span>
-            </span>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F4c9a87b2906e4142bed52480340c1158%2F440f2adecec34ff5b69b0bfab6badf1f?format=webp&width=800&height=1200"
+              alt="Savor Korea Logo"
+              className="h-12 w-12 object-contain"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -56,8 +58,10 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-destructive ${
-                  location.pathname === link.path ? 'text-destructive' : 'text-primary/80'
+                className={`text-sm font-medium transition-colors ${
+                  location.pathname === link.path
+                    ? 'text-destructive'
+                    : isScrolled ? 'text-primary/70 hover:text-destructive' : 'text-white/90 hover:text-destructive'
                 }`}
               >
                 {link.name}
@@ -66,8 +70,10 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/order" className="relative p-2 hover:bg-secondary rounded-full transition-colors">
-              <ShoppingBag size={20} />
+            <Link to="/order" className={`relative p-2 rounded-full transition-colors ${
+              isScrolled ? 'hover:bg-secondary' : 'hover:bg-white/10'
+            }`}>
+              <ShoppingBag size={20} className={isScrolled ? 'text-primary' : 'text-white'} />
               <span className="absolute top-0 right-0 bg-destructive text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                 0
               </span>
@@ -76,7 +82,9 @@ const Header = () => {
             {user ? (
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger asChild>
-                  <button className="w-10 h-10 rounded-full overflow-hidden border-2 border-destructive/20 hover:border-destructive transition-colors">
+                  <button className={`w-10 h-10 rounded-full overflow-hidden border-2 transition-colors ${
+                    isScrolled ? 'border-destructive/40 hover:border-destructive' : 'border-white/40 hover:border-white'
+                  }`}>
                     <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
                   </button>
                 </DropdownMenu.Trigger>
@@ -111,7 +119,7 @@ const Header = () => {
             )}
           </div>
 
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+          <button className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`} onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
