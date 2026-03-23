@@ -121,10 +121,10 @@ export function CartPage() {
                         </span>
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="p-2 hover:bg-red-500/20 rounded-lg transition-colors group"
+                          className="p-2 hover:bg-destructive/20 rounded-lg transition-colors group"
                           aria-label="Remove item"
                         >
-                          <Trash2 className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
+                          <Trash2 className="w-5 h-5 text-destructive group-hover:scale-110 transition-transform" />
                         </button>
                       </div>
                     </div>

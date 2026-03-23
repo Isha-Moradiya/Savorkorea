@@ -5,6 +5,7 @@ import '@radix-ui/themes/styles.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './context/AuthContext.tsx';
+import ScrollToTop from './components/ScrollToTop.tsx';
 import Home from './pages/Home.tsx';
 import Menu from './pages/Menu.tsx';
 import MenuItemDetails from './pages/MenuItemDetails.tsx';
@@ -18,9 +19,10 @@ import NotFound from './pages/NotFound.tsx';
 
 const App = () => {
   return (
-    <Theme appearance="light" accentColor="crimson" radius="large">
+    <Theme appearance="light" accentColor="gold" radius="large">
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <main className="min-h-screen font-sans selection:bg-destructive/20 selection:text-destructive">
             <Routes>
               <Route path="/" element={<Home />} />

@@ -87,7 +87,7 @@ export function MenuPage() {
                   {item.spicyLevel && item.spicyLevel > 0 && (
                     <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1">
                       {[...Array(item.spicyLevel)].map((_, i) => (
-                        <Flame key={i} className="w-3 h-3 text-red-500 fill-red-500" />
+                        <Flame key={i} className="w-3 h-3 text-destructive fill-destructive" />
                       ))}
                     </div>
                   )}
