@@ -1,173 +1,117 @@
-import { MenuItem } from "../context/CartContext";
+export interface Review {
+  id: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  date: string;
+}
 
-export const menuCategories = [
-  { id: "all", name: "All" },
-  { id: "mains", name: "Main Dishes" },
-  { id: "appetizers", name: "Appetizers" },
-  { id: "desserts", name: "Desserts" },
-  { id: "beverages", name: "Beverages" },
-];
+export interface MenuItem {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  desc: string;
+  fullDesc: string;
+  rating: number;
+  reviews: Review[];
+}
 
 export const menuItems: MenuItem[] = [
-  // Main Dishes
-  {
-    id: "1",
-    name: "Bibimbap",
-    description: "Mixed rice with vegetables, meat, and gochujang sauce",
-    price: 14.99,
-    image: "https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=600&h=600&fit=crop",
-    category: "mains",
+  { 
+    id: 1, 
+    name: 'Kimchi Pancakes', 
+    category: 'Starters', 
+    price: 12.00, 
+    image: 'https://placehold.co/800x400', 
+    desc: 'Crispy savory pancakes with aged kimchi and scallions.',
+    fullDesc: 'Our signature Kimchi Pancakes (Kimchijeon) are made with well-fermented kimchi, giving them a deep, tangy flavor. They are pan-fried to perfection until the edges are golden and crispy, served with a side of soy-vinegar dipping sauce.',
     rating: 4.8,
-    spicyLevel: 2,
+    reviews: [
+      { id: 'r1', userName: 'Sarah J.', rating: 5, comment: 'Best kimchi pancakes I\'ve ever had! So crispy.', date: '2024-03-15' },
+      { id: 'r2', userName: 'Mike T.', rating: 4, comment: 'Great flavor, maybe a bit too spicy for some.', date: '2024-03-10' }
+    ]
   },
-  {
-    id: "2",
-    name: "Bulgogi",
-    description: "Marinated beef grilled to perfection with vegetables",
-    price: 18.99,
-    image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=600&fit=crop",
-    category: "mains",
-    rating: 4.9,
-    spicyLevel: 1,
-  },
-  {
-    id: "3",
-    name: "Kimchi Jjigae",
-    description: "Spicy kimchi stew with pork and tofu",
-    price: 13.99,
-    image: "https://images.unsplash.com/photo-1606850780554-b55ef8b70798?w=600&h=600&fit=crop",
-    category: "mains",
+  { 
+    id: 2, 
+    name: 'Mandu (Dumplings)', 
+    category: 'Starters', 
+    price: 10.50, 
+    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Handmade steamed or fried dumplings with pork and chives.',
+    fullDesc: 'Traditional Korean dumplings filled with a savory mixture of ground pork, tofu, garlic chives, and ginger. Choose between steamed for a delicate texture or pan-fried for a satisfying crunch.',
     rating: 4.7,
-    spicyLevel: 3,
+    reviews: []
   },
-  {
-    id: "4",
-    name: "Japchae",
-    description: "Stir-fried glass noodles with vegetables and beef",
-    price: 12.99,
-    image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&h=600&fit=crop",
-    category: "mains",
-    rating: 4.6,
-    spicyLevel: 0,
-  },
-  {
-    id: "5",
-    name: "Korean Fried Chicken",
-    description: "Crispy fried chicken with sweet & spicy glaze",
-    price: 16.99,
-    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=600&fit=crop",
-    category: "mains",
+  { 
+    id: 3, 
+    name: 'Bibimbap', 
+    category: 'Main Course', 
+    price: 18.50, 
+    image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Mixed rice with vegetables, beef, and spicy gochujang.',
+    fullDesc: 'A colorful bowl of warm white rice topped with an array of sautéed and seasoned vegetables (namul), sliced beef, and a fried egg. Served with our house-made gochujang (chili pepper paste) to be mixed in thoroughly before eating.',
     rating: 4.9,
-    spicyLevel: 2,
+    reviews: [
+      { id: 'r3', userName: 'David L.', rating: 5, comment: 'The gochujang sauce is incredible.', date: '2024-03-12' }
+    ]
   },
-  {
-    id: "6",
-    name: "Samgyeopsal",
-    description: "Grilled pork belly served with lettuce wraps",
-    price: 19.99,
-    image: "https://images.unsplash.com/photo-1602030638412-bb8dcc0bc8b0?w=600&h=600&fit=crop",
-    category: "mains",
-    rating: 4.8,
-    spicyLevel: 1,
-  },
-
-  // Appetizers
-  {
-    id: "7",
-    name: "Gimbap",
-    description: "Korean seaweed rice rolls with vegetables and egg",
-    price: 8.99,
-    image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600&h=600&fit=crop",
-    category: "appetizers",
-    rating: 4.7,
-    spicyLevel: 0,
-  },
-  {
-    id: "8",
-    name: "Tteokbokki",
-    description: "Spicy rice cakes in gochujang sauce",
-    price: 9.99,
-    image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=600&fit=crop",
-    category: "appetizers",
-    rating: 4.8,
-    spicyLevel: 3,
-  },
-  {
-    id: "9",
-    name: "Mandu",
-    description: "Korean dumplings filled with pork and vegetables",
-    price: 7.99,
-    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&h=600&fit=crop",
-    category: "appetizers",
+  { 
+    id: 4, 
+    name: 'Japchae', 
+    category: 'Main Course', 
+    price: 16.00, 
+    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Stir-fried glass noodles with vegetables and beef.',
+    fullDesc: 'Sweet and savory stir-fried glass noodles made from sweet potato starch, tossed with colorful vegetables like carrots, spinach, and mushrooms, along with tender strips of beef.',
     rating: 4.6,
-    spicyLevel: 0,
+    reviews: []
   },
-  {
-    id: "10",
-    name: "Korean Pancake",
-    description: "Savory scallion pancake with dipping sauce",
-    price: 8.99,
-    image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&h=600&fit=crop",
-    category: "appetizers",
+  { 
+    id: 5, 
+    name: 'Galbi (Short Ribs)', 
+    category: 'BBQ', 
+    price: 28.00, 
+    image: 'https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Premium beef short ribs marinated in signature sauce.',
+    fullDesc: 'High-quality beef short ribs marinated in a sweet and savory blend of soy sauce, pear juice, garlic, and sesame oil. Grilled over an open flame to achieve a smoky, caramelized finish.',
+    rating: 5.0,
+    reviews: [
+      { id: 'r4', userName: 'Emma W.', rating: 5, comment: 'Melts in your mouth. Absolutely worth the price.', date: '2024-03-18' }
+    ]
+  },
+  { 
+    id: 6, 
+    name: 'Samgyeopsal', 
+    category: 'BBQ', 
+    price: 22.00, 
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Thick slices of pork belly grilled to perfection.',
+    fullDesc: 'Thick, fatty slices of pork belly grilled until crispy. Served with lettuce wraps (ssam), garlic, green peppers, and ssamjang (a thick, spicy paste) for the ultimate Korean BBQ experience.',
+    rating: 4.8,
+    reviews: []
+  },
+  { 
+    id: 7, 
+    name: 'Bingsu', 
+    category: 'Desserts', 
+    price: 14.00, 
+    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Korean shaved ice with sweet red beans and fruit.',
+    fullDesc: 'A refreshing dessert of milk-based shaved ice with a snow-like texture. Topped with sweet red beans (pat), chewy rice cakes (tteok), and seasonal fresh fruits.',
+    rating: 4.7,
+    reviews: []
+  },
+  { 
+    id: 8, 
+    name: 'Soju Cocktail', 
+    category: 'Drinks', 
+    price: 12.00, 
+    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800', 
+    desc: 'Refreshing blend of premium soju and seasonal fruits.',
+    fullDesc: 'A modern twist on Korea\'s favorite spirit. We blend premium soju with fresh-pressed fruit juices and a hint of sparkling water for a light, refreshing cocktail.',
     rating: 4.5,
-    spicyLevel: 1,
-  },
-
-  // Desserts
-  {
-    id: "11",
-    name: "Bingsu",
-    description: "Shaved ice dessert with fresh fruits and sweet toppings",
-    price: 11.99,
-    image: "https://images.unsplash.com/photo-1571506165871-ee72a35bc9d4?w=600&h=600&fit=crop",
-    category: "desserts",
-    rating: 4.9,
-  },
-  {
-    id: "12",
-    name: "Hotteok",
-    description: "Sweet Korean pancake filled with brown sugar and nuts",
-    price: 6.99,
-    image: "https://images.unsplash.com/photo-1603893411441-e6d82bae0530?w=600&h=600&fit=crop",
-    category: "desserts",
-    rating: 4.7,
-  },
-  {
-    id: "13",
-    name: "Patbingsu",
-    description: "Red bean shaved ice with condensed milk",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=600&fit=crop",
-    category: "desserts",
-    rating: 4.6,
-  },
-
-  // Beverages
-  {
-    id: "14",
-    name: "Korean Plum Tea",
-    description: "Traditional sweet and tangy plum tea",
-    price: 4.99,
-    image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=600&fit=crop",
-    category: "beverages",
-    rating: 4.5,
-  },
-  {
-    id: "15",
-    name: "Banana Milk",
-    description: "Classic Korean banana-flavored milk",
-    price: 3.99,
-    image: "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=600&h=600&fit=crop",
-    category: "beverages",
-    rating: 4.8,
-  },
-  {
-    id: "16",
-    name: "Soju",
-    description: "Korean traditional spirit (21+)",
-    price: 8.99,
-    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&h=600&fit=crop",
-    category: "beverages",
-    rating: 4.7,
+    reviews: []
   },
 ];

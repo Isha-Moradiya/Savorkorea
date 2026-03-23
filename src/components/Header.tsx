@@ -1,90 +1,160 @@
-import { useState, useEffect } from "react";
-import svgPaths from "../../imports/svg-czto1guskq";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ShoppingBag, User, LogOut, Settings } from 'lucide-react';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { useAuth } from '../context/AuthContext';
+import AuthModal from './AuthModal';
 
-export function Header() {
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Menu', path: '/menu' },
+    { name: 'Order', path: '/order' },
+    { name: 'Reservation', path: '/reservation' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#f4e8ac]/95 backdrop-blur-sm shadow-md" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
-        <div className="flex items-center justify-between h-20 lg:h-[94px]">
-          {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("home")}>
-            <div className="relative inline-grid grid-cols-[max-content] grid-rows-[max-content] place-items-start">
-              <div className="relative size-[50px] lg:size-[78px]">
-                <div className="absolute inset-[-32%]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 78.307 78.4292">
-                    <g>
-                      <path d={svgPaths.p2f7be200} fill="#111111" stroke="#C59D5F" strokeWidth="0.463716" />
-                      <path d={svgPaths.p3562eb00} fill="#111111" stroke="#C59D5F" strokeWidth="16.2301" />
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-15.49deg] skew-x-[-0.08deg]"
-              >
-                <p className="capitalize font-bold text-[#f9f4d3] text-xs lg:text-sm text-center whitespace-nowrap select-none">
-                  SavorKorea
-                </p>
-              </div>
-            </div>
-          </div>
+    <>
+      <header 
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <Link to="/" className="flex items-center gap-2">
+            <span className="font-serif text-2xl font-bold tracking-tighter text-primary">
+              SAVOR<span className="text-destructive">KOREA</span>
+            </span>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-[55px]">
-            {[
-              { label: "Home", id: "home" },
-              { label: "Menu", id: "menu" },
-              { label: "Gallery", id: "gallery" },
-              { label: "Catering", id: "catering" },
-              { label: "About Us", id: "about" }
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="capitalize font-normal text-[#111] text-base hover:text-[#c59d5f] transition-colors duration-300 relative group"
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-sm font-medium transition-colors hover:text-destructive ${
+                  location.pathname === link.path ? 'text-destructive' : 'text-primary/80'
+                }`}
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#c59d5f] transition-all duration-300 group-hover:w-full" />
-              </button>
+                {link.name}
+              </Link>
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden p-2" onClick={() => {/* Mobile menu toggle */}}>
-            <svg className="w-6 h-6 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <div className="hidden md:flex items-center gap-4">
+            <Link to="/order" className="relative p-2 hover:bg-secondary rounded-full transition-colors">
+              <ShoppingBag size={20} />
+              <span className="absolute top-0 right-0 bg-destructive text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                0
+              </span>
+            </Link>
+
+            {user ? (
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild>
+                  <button className="w-10 h-10 rounded-full overflow-hidden border-2 border-destructive/20 hover:border-destructive transition-colors">
+                    <img src={user.image} alt={user.name} className="w-full h-full object-cover" />
+                  </button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                  <DropdownMenu.Content className="min-w-[200px] bg-white rounded-2xl p-2 shadow-xl border border-border z-[60] animate-in fade-in zoom-in-95 duration-200">
+                    <div className="px-3 py-2 mb-2">
+                      <p className="text-sm font-bold text-primary">{user.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                    </div>
+                    <DropdownMenu.Item 
+                      className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg cursor-pointer hover:bg-secondary outline-none"
+                      onClick={() => navigate('/profile')}
+                    >
+                      <User size={16} /> Profile
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item 
+                      className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg cursor-pointer hover:bg-secondary outline-none text-destructive"
+                      onClick={logout}
+                    >
+                      <LogOut size={16} /> Logout
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+              </DropdownMenu.Root>
+            ) : (
+              <button 
+                onClick={() => setIsAuthModalOpen(true)}
+                className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:scale-105 transition-transform"
+              >
+                Login
+              </button>
+            )}
+          </div>
+
+          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </div>
-    </header>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-t overflow-hidden"
+            >
+              <div className="flex flex-col p-6 gap-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium text-primary"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <hr className="my-2" />
+                {user ? (
+                  <>
+                    <Link to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-lg font-medium">
+                      <User size={20} /> Profile
+                    </Link>
+                    <button onClick={() => { logout(); setIsOpen(false); }} className="flex items-center gap-2 text-lg font-medium text-destructive">
+                      <LogOut size={20} /> Logout
+                    </button>
+                  </>
+                ) : (
+                  <button 
+                    onClick={() => { setIsAuthModalOpen(true); setIsOpen(false); }}
+                    className="bg-destructive text-white text-center py-3 rounded-lg font-bold"
+                  >
+                    Login
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+    </>
   );
-}
+};
+
+export default Header;

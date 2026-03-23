@@ -1,88 +1,83 @@
-import svgPaths from "../../imports/svg-czto1guskq";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Instagram, Facebook, Twitter, MapPin, Phone, Mail } from 'lucide-react';
 
-export function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-[#111] py-12 lg:py-24">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 xl:gap-[255px] items-start justify-center max-w-[1206px] mx-auto">
-          {/* Addresses */}
-          <div className="space-y-6 lg:space-y-10 text-center lg:text-left">
-            <h3 className="capitalize font-bold text-[#c59d5f] text-xl lg:text-[25px] leading-normal">
-              Addresses
-            </h3>
-            <div className="space-y-4 lg:space-y-6 font-normal text-[#c59d5f] text-xs leading-relaxed">
-              <p>
-                Shop No-14-15, Aagam Emporio, Near Harley Davidson Showroom Udhna, Udhana - Magdalla Rd, Vesu, Surat, Gujarat 395007
-              </p>
-              <p>
-                Shop No-14-15, Aagam Emporio, Near Harley Davidson Showroom Udhna, Udhana - Magdalla Rd, Vesu, Surat, Gujarat 395007
-              </p>
-            </div>
-          </div>
-
-          {/* Logo */}
-          <div className="flex flex-col items-center space-y-6 lg:space-y-8">
-            <div className="relative inline-grid grid-cols-[max-content] grid-rows-[max-content] place-items-start">
-              <div className="relative size-[80px] lg:size-[103px]">
-                <div className="absolute inset-[-32%]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 169 169">
-                    <g>
-                      <path d={svgPaths.p21f7c7f0} fill="#111111" />
-                      <circle cx="84.5" cy="84.5" r="67" stroke="#C59D5F" strokeWidth="35" />
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-15.45deg]">
-                <p className="capitalize font-bold text-[#f9f4d3] text-xl lg:text-[30px] text-center whitespace-nowrap select-none">
-                  SavorKorea
-                </p>
-              </div>
-            </div>
-
-            <p className="capitalize font-normal text-[#c59d5f] text-2xl lg:text-[37px] text-center leading-normal">
-              SavorKorea
-            </p>
-
-            {/* Facebook Icon */}
-            <div className="w-12 lg:w-[63px] h-5 lg:h-6">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 63.7407 23.9775">
-                <g>
-                  <path d={svgPaths.p1d355df0} fill="#C59D5F" />
-                  <path d={svgPaths.p22291900} stroke="#C59D5F" strokeLinecap="round" strokeLinejoin="round" />
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          {/* Hours & Order Online */}
-          <div className="space-y-6 lg:space-y-10 text-center lg:text-left">
-            {/* Hours */}
-            <div className="space-y-4 lg:space-y-8">
-              <h3 className="capitalize font-bold text-[#c59d5f] text-xl lg:text-[25px] leading-normal">
-                Hours
-              </h3>
-              <div className="capitalize font-normal text-[#c59d5f] text-xs leading-relaxed">
-                <p>mon-fri 7am-3am</p>
-                <p>sat-sun 8am-2pm</p>
-              </div>
-            </div>
-
-            {/* Order Online */}
-            <div className="space-y-4 lg:space-y-8">
-              <h3 className="capitalize font-bold text-[#c59d5f] text-xl lg:text-[25px] leading-normal">
-                Order Online
-              </h3>
-              <a 
-                href="tel:+916579876543" 
-                className="capitalize font-normal text-[#c59d5f] text-xs leading-normal hover:text-[#d4ae70] transition-colors duration-300 block"
-              >
-                +91-657-987-654
+    <footer className="bg-primary text-white pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="space-y-6">
+          <Link to="/" className="font-serif text-2xl font-bold tracking-tighter">
+            SAVOR<span className="text-destructive">KOREA</span>
+          </Link>
+          <p className="text-white/60 leading-relaxed">
+            Experience the authentic soul of Korean cuisine. From sizzling BBQ to comforting stews, we bring the heart of Seoul to your table.
+          </p>
+          <div className="flex gap-4">
+            {[Instagram, Facebook, Twitter].map((Icon, i) => (
+              <a key={i} href="#" className="p-2 bg-white/10 rounded-full hover:bg-destructive transition-colors">
+                <Icon size={18} />
               </a>
-            </div>
+            ))}
           </div>
+        </div>
+
+        <div>
+          <h4 className="font-serif text-lg font-bold mb-6">Quick Links</h4>
+          <ul className="space-y-4 text-white/60">
+            <li><Link to="/menu" className="hover:text-white transition-colors">Our Menu</Link></li>
+            <li><Link to="/reservation" className="hover:text-white transition-colors">Reservations</Link></li>
+            <li><Link to="/about" className="hover:text-white transition-colors">Our Story</Link></li>
+            <li><Link to="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-serif text-lg font-bold mb-6">Contact Us</h4>
+          <ul className="space-y-4 text-white/60">
+            <li className="flex items-start gap-3">
+              <MapPin size={18} className="shrink-0 text-destructive" />
+              <span>123 K-Town Blvd, Los Angeles, CA 90010</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Phone size={18} className="shrink-0 text-destructive" />
+              <span>+1 (555) 123-4567</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Mail size={18} className="shrink-0 text-destructive" />
+              <span>hello@savorkorea.com</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-serif text-lg font-bold mb-6">Opening Hours</h4>
+          <ul className="space-y-2 text-white/60">
+            <li className="flex justify-between">
+              <span>Mon - Thu</span>
+              <span>11:00 AM - 10:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Fri - Sat</span>
+              <span>11:00 AM - 11:00 PM</span>
+            </li>
+            <li className="flex justify-between">
+              <span>Sunday</span>
+              <span>12:00 PM - 9:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/10 flex flex-col md:row justify-between items-center gap-4 text-sm text-white/40">
+        <p>© 2026 SavorKorea. All rights reserved.</p>
+        <div className="flex gap-8">
+          <a href="#" className="hover:text-white">Privacy Policy</a>
+          <a href="#" className="hover:text-white">Terms of Service</a>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
