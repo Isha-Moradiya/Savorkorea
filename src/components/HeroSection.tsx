@@ -96,7 +96,7 @@ export function HeroSection() {
               
               {/* Dots Indicator */}
               <div className="flex gap-3 lg:gap-4">
-                <div className="w-3 h-3 lg:w-[15px] lg:h-[15px] rounded-full bg-[#c59d5f]" />
+                <div className="w-3 h-3 lg:w-[15px] lg:h-[15px] rounded-full bg-destructive" />
                 <div className="w-3 h-3 lg:w-[15px] lg:h-[15px] rounded-full border border-[#c59d5f]" />
                 <div className="w-3 h-3 lg:w-[15px] lg:h-[15px] rounded-full border border-[#c59d5f]" />
                 <div className="w-3 h-3 lg:w-[15px] lg:h-[15px] rounded-full border border-[#c59d5f]" />

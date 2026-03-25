@@ -93,7 +93,7 @@ export function CateringSection() {
                   onClick={() => goToSlide(index)}
                   className={`rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'w-3 h-3 lg:w-[10px] lg:h-[10px] bg-[#c59d5f]' 
+                      ? 'w-3 h-3 lg:w-[10px] lg:h-[10px] bg-destructive' 
                       : 'w-3 h-3 lg:w-[10px] lg:h-[10px] border border-[#c59d5f] hover:bg-[#c59d5f]/50'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}

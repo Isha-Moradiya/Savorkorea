@@ -96,7 +96,7 @@ export function MenuSection() {
                   onClick={() => goToSlide(index)}
                   className={`rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'w-4 h-4 lg:w-5 lg:h-5 bg-[#c59d5f]' 
+                      ? 'w-4 h-4 lg:w-5 lg:h-5 bg-destructive' 
                       : 'w-4 h-4 lg:w-5 lg:h-5 border border-[#c59d5f] hover:bg-[#c59d5f]/50'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}

@@ -1,10 +1,11 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useCart } from "../context/CartContext";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 
 export function CartPage() {
+  const navigate = useNavigate();
   const { cart, updateQuantity, removeFromCart, getTotalPrice } = useCart();
   const total = getTotalPrice();
   const deliveryFee = total > 0 ? 4.99 : 0;
@@ -161,7 +162,10 @@ export function CartPage() {
                   </div>
                 </div>
 
-                <button className="w-full bg-destructive text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 mb-4">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="w-full bg-destructive text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 mb-4"
+                >
                   Proceed to Checkout
                 </button>
 

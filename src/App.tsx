@@ -10,6 +10,7 @@ import Home from './pages/Home.tsx';
 import Menu from './pages/Menu.tsx';
 import MenuItemDetails from './pages/MenuItemDetails.tsx';
 import Ordering from './pages/Ordering.tsx';
+import Checkout from './pages/Checkout.tsx';
 import Reservation from './pages/Reservation.tsx';
 import Gallery from './pages/Gallery.tsx';
 import About from './pages/About.tsx';
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/menu" element={<Menu />} />
               <Route path="/menu/:id" element={<MenuItemDetails />} />
               <Route path="/order" element={<Ordering />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/reservation" element={<Reservation />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/about" element={<About />} />
