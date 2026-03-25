@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useCart } from "../context/CartContext";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 

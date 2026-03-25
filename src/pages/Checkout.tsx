@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useCart } from '../context/CartContext';
 import { ChevronLeft, Lock } from 'lucide-react';
 import PaymentModal from '../components/PaymentModal';

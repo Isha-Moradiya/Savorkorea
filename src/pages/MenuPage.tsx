@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { menuCategories, menuItems } from "../data/menuData";
 import { useCart } from "../context/CartContext";
 import { Plus, Star, Flame, ShoppingCart, Check } from "lucide-react";
